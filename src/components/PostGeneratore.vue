@@ -78,7 +78,7 @@
             <div class="row">
               <div class="col-md-6 offset-md-3">
                 <h2 class="mb-4">Generate Post</h2>
-                <form @submit.prevent="submitForm" enctype="multipart/form-data" class="">
+                <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="">
                   <div class="mb-3">
                     <label for="details" class="form-label fw-semibold">Details</label>
                     <textarea class="form-control" placeholder="Enter Details/News" id="floatingTextarea" v-model="formData.details" />
@@ -137,7 +137,7 @@
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 export default {
-  name: "FlayrTool",
+  name: "PostGeneratore",
 
   data() {
     return {
@@ -159,8 +159,8 @@ export default {
         reader.readAsDataURL(file);
       }
     },
-    submitForm() {
-      console.log("submitForm Called");
+    handleSubmit() {
+      console.log("handleSubmit Called");
       if (this.formData.details == "") {
         toast.error(`Enter Details`, {
           autoClose: 1500,
