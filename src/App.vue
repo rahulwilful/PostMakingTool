@@ -1,10 +1,10 @@
 <script setup>
-import FlayerTool from "./components/FlayerTool.vue";
+import PostGeneratore from "./components/PostGeneratore.vue";
 </script>
 
 <template>
   <div>
-    <FlayerTool />
+    <PostGeneratore />
   </div>
 </template>
 
