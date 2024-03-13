@@ -1,6 +1,5 @@
 <style scoped>
 .main {
-  position: relative;
   width: 100%;
   min-height: 100vh;
 }
@@ -107,8 +106,11 @@
                   </div>
                 </div>
               </div>
-              <div v-auto-animate class="preview-details px-4 text-dark bg-light mx-2 rounded">
-                <div class="py-4 border d-flex justify-content-center">
+              <div v-auto-animate class="preview-details px-4 text-dark bg-light mx-2 py-4 rounded">
+                <div class="">
+                  <span class="bg-danger px-2 rounded text-light fw-semibold">NEWS </span>
+                </div>
+                <div class="d-flex justify-content-center">
                   <span>
                     <h5 style="text-align: justify">{{ formData.details }}</h5>
                   </span>
@@ -136,6 +138,8 @@
 <script>
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import html2canvas from "html2canvas";
+
 export default {
   name: "PostGeneratore",
 
@@ -184,22 +188,14 @@ export default {
     downloadPreview() {
       console.log("downloadPreview Called");
 
-      // Create a canvas element
-      const canvas = document.createElement("canvas");
-      // Set canvas dimensions to match the preview content
+      // Select the preview area
       const preview = document.querySelector(".preview");
-      const previewStyle = window.getComputedStyle(preview);
-      canvas.width = parseInt(previewStyle.width, 10);
-      canvas.height = parseInt(previewStyle.height, 10);
-      // Get canvas context
-      const ctx = canvas.getContext("2d");
-      // Draw preview content onto the canvas
-      const previewHtml = preview.innerHTML;
-      const img = new Image();
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0);
-        // Convert canvas to image
+
+      // Use html2canvas to capture the preview area
+      html2canvas(preview).then((canvas) => {
+        // Convert canvas to data URL
         const dataURL = canvas.toDataURL("image/jpeg");
+
         // Create a link element
         const link = document.createElement("a");
         // Set link attributes
@@ -207,8 +203,9 @@ export default {
         link.download = "preview.jpg";
         // Simulate click on the link to trigger download
         link.click();
-      };
-      img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(previewHtml);
+      });
+
+      console.log("downloadPreview Ended");
     },
   },
 };
