@@ -194,13 +194,13 @@ export default {
       // Use html2canvas to capture the preview area
       html2canvas(preview).then((canvas) => {
         // Convert canvas to data URL
-        const dataURL = canvas.toDataURL("image/jpeg");
+        const dataURL = canvas.toDataURL("image/png");
 
         // Create a link element
         const link = document.createElement("a");
         // Set link attributes
         link.href = dataURL;
-        link.download = "preview.jpg";
+        link.download = "preview.png";
         // Simulate click on the link to trigger download
         link.click();
       });
