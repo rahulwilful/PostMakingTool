@@ -1,5 +1,5 @@
 <script setup>
-import PostGeneratore from "./components/PostGeneratore.vue";
+import PostGeneratore from "./components/PostGeneratore3.vue";
 </script>
 
 <template>
