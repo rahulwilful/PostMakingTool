@@ -35,7 +35,45 @@
   background-size: cover;
   background-position: bottom;
 }
-@media (max-width: 576px) {
+
+@media (max-width: 529px) {
+  .form-container {
+    background: linear-gradient(to right, #00b09b, #2cf7df);
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    height: auto;
+  }
+  .preview {
+    width: 90%;
+    min-width: 400px;
+    min-height: 450px;
+    max-width: 400px;
+    max-height: 450px;
+  }
+
+  .preview-image {
+    width: 80%;
+  }
+
+  .preview-details-body {
+    max-height: 9rem;
+    width: 70%;
+    min-height: 8rem;
+  }
+
+  .preview-details {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+  }
+
+  .preview-content {
+    height: 77%;
+  }
+}
+
+@media (min-width: 529px) {
   .form-container {
     background: linear-gradient(to right, #00b09b, #2cf7df);
     border-radius: 10px;
@@ -80,8 +118,7 @@
   }
   .preview {
     width: 90%;
-
-    min-height: 480px;
+    min-height: 540px;
   }
 
   .preview-image {
@@ -96,7 +133,7 @@
 
   .preview-details {
     position: absolute;
-    top: 68%;
+    top: 67%;
     width: 100%;
   }
 
@@ -117,7 +154,7 @@
   .preview {
     width: 60%;
     max-width: 700px;
-    min-height: 480px;
+    min-height: 540px;
   }
 
   .preview-image {
@@ -132,7 +169,7 @@
 
   .preview-details {
     position: absolute;
-    top: 61%;
+    top: 68%;
     width: 100%;
   }
 
@@ -191,6 +228,38 @@
     height: 77%;
   }
 }
+
+.preview2 {
+  background: url("../assets/bgImg.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.preview2 {
+  min-height: 700px;
+  min-width: 650px;
+  max-height: 700px;
+  max-width: 650px;
+}
+.preview2-image {
+  width: 80%;
+}
+
+.preview2-details-body {
+  width: 70%;
+  min-height: 8rem;
+  max-height: 12rem;
+}
+
+.preview2-details {
+  position: absolute;
+  top: 65%;
+  width: 100%;
+}
+
+.preview2-content {
+  height: 77%;
+}
 </style>
 
 <template>
@@ -209,8 +278,10 @@
                   </div>
                   <div class="mb-3">
                     <label for="details" class="form-label fw-semibold">Details</label>
-                    <textarea class="form-control" placeholder="Enter Details" id="floatingTextarea" v-model="formData.details"></textarea>
+                    <textarea class="form-control" placeholder="Enter Details" id="floatingTextarea" v-model="formData.details" maxlength="100"></textarea>
+                    <div class="text-muted mt-1">{{ formData.details.length }} / 100</div>
                   </div>
+
                   <div class="mb-3">
                     <label for="details" class="form-label fw-semibold">Tag</label>
                     <input class="form-control text-capitalize" placeholder="Sports/News/Politics/Notice" id="floatingTextarea" v-model="formData.tag" />
@@ -281,7 +352,58 @@
             </div>
           </div>
           <div class="d-flex justify-content-center mt-3">
-            <button @click="downloadPreview" class="btn btn-primary submit-btn">Download Preview</button>
+            <button @click="handleDownload" class="btn btn-primary submit-btn">Download Preview</button>
+          </div>
+          <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+          <div v-if="downloaded">
+            <div class="preview2-area w-100 mt-5">
+              <div class="preview2-container w-100 d-flex justify-content-center">
+                <div class="preview2 py-3 position-relative">
+                  <div class="position-relative preview2-content">
+                    <div class="preview2-body mt-1 d-flex justify-content-center">
+                      <div class="preview2-image">
+                        <div v-auto-animate class="w-100 h-100 p-2 bg-light">
+                          <div v-auto-animate class="w-100 h-100 bg-light position-relative">
+                            <img :src="formData.image" class="border-0 w-100 h-100" alt="..." />
+                            <div class="position-absolute top-0 end-0 mt-2 me-2">
+                              <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-75 float-end" alt="..." style="width: 20%; height: auto" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div v-auto-animate class="preview2-details text-dark d-flex justify-content-center">
+                      <div class="preview2-details-body bg-light rounded py-2 px-2">
+                        <div class="h-100 position-relative">
+                          <div class="d-flex justify-content-center" style="height: 100%">
+                            <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-50" alt="..." style="width: auto; height: 100%" />
+                          </div>
+                          <div class="h-100 w-100 position-absolute start-0 top-0 preview2-details-body-content">
+                            <div class="d-flex justify-content-between preview2-details-body-content-header mb-1">
+                              <span class="bg-danger px-2 rounded text-light fw-semibold text-capitalize">{{ formData.tag }}</span>
+                              <span class="fw-semibold text-primary" style="text-decoration: underline">{{ formData.day }},{{ formData.date }}</span>
+                            </div>
+                            <div class="d-flex preview2-details-body-content-body justify-content-center px-2" style="height: calc(100% - 25px)">
+                              <span class="d-flex align-items-center" style="height: 100%">
+                                <span>
+                                  <h4 class="fw-bold" style="text-align: left">{{ formData.details }}</h4>
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="preview2-footer my-1 text-light mb-3 position-absolute bottom-0 w-100">
+                    <div class="d-flex justify-content-evenly">
+                      <img src="../assets/CircularLogo_gn.png " class="img-thumbnail mx-2" alt="..." style="width: 50px; height: 50px" />
+                      <img src="../assets/Footerbanner.png" class="img-thumbnail bg-transparent border-0 mx-2" alt="..." style="height: 50px" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -309,6 +431,7 @@ export default {
         { day: "Sunday", value: "Sun" },
       ],
       submited: false,
+      downloaded: false,
       formData: {
         details: "",
         image: null,
@@ -373,11 +496,19 @@ export default {
       // Example: Send form data to the server using axios or fetch API
     },
 
+    handleDownload() {
+      this.downloaded = true;
+      setTimeout(() => {
+        this.downloadPreview();
+      }, 1000);
+    },
+
     downloadPreview() {
+      //this.downloaded = true;
       console.log("downloadPreview Called");
 
       // Select the preview area
-      const preview = document.querySelector(".preview");
+      const preview = document.querySelector(".preview2");
 
       // Use html2canvas to capture the preview area
       html2canvas(preview).then((canvas) => {
@@ -392,7 +523,7 @@ export default {
         // Simulate click on the link to trigger download
         link.click();
       });
-
+      this.downloaded = false;
       console.log("downloadPreview Ended");
     },
   },
