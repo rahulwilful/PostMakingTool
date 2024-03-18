@@ -64,7 +64,7 @@
 
   .preview-details {
     position: absolute;
-    top: 60%;
+    top: 46%;
     width: 100%;
   }
 
@@ -99,7 +99,7 @@
 
   .preview-details {
     position: absolute;
-    top: 71%;
+    top: 52%;
     width: 100%;
   }
 
@@ -133,7 +133,7 @@
 
   .preview-details {
     position: absolute;
-    top: 67%;
+    top: 51%;
     width: 100%;
   }
 
@@ -156,7 +156,6 @@
     max-width: 700px;
     min-height: 540px;
   }
-
   .preview-image {
     width: 80%;
   }
@@ -169,7 +168,7 @@
 
   .preview-details {
     position: absolute;
-    top: 68%;
+    top: 51%;
     width: 100%;
   }
 
@@ -194,7 +193,7 @@
 
   .preview-details {
     position: absolute;
-    top: 77%;
+    top: 56%;
     width: 100%;
   }
 
@@ -215,12 +214,12 @@
   .preview-details-body {
     width: 70%;
     min-height: 8rem;
-    max-height: 9rem;
+    max-height: 15rem;
   }
 
   .preview-details {
     position: absolute;
-    top: 78%;
+    top: 58%;
     width: 100%;
   }
 
@@ -237,9 +236,9 @@
 
 .preview2 {
   min-height: 700px;
-  min-width: 650px;
+  min-width: 700px;
   max-height: 700px;
-  max-width: 650px;
+  max-width: 700px;
 }
 .preview2-image {
   width: 80%;
@@ -248,12 +247,12 @@
 .preview2-details-body {
   width: 70%;
   min-height: 8rem;
-  max-height: 12rem;
+  max-height: 17rem;
 }
 
 .preview2-details {
   position: absolute;
-  top: 65%;
+  top: 51%;
   width: 100%;
 }
 
@@ -278,8 +277,8 @@
                   </div>
                   <div class="mb-3">
                     <label for="details" class="form-label fw-semibold">Details</label>
-                    <textarea class="form-control" placeholder="Enter Details" id="floatingTextarea" v-model="formData.details" maxlength="100"></textarea>
-                    <div class="text-muted mt-1">{{ formData.details.length }} / 100</div>
+                    <textarea class="form-control" placeholder="Enter Details" id="floatingTextarea" v-model="formData.details" maxlength="250"></textarea>
+                    <div class="text-muted mt-1">{{ formData.details.length }} / 250</div>
                   </div>
 
                   <div class="mb-3">
@@ -308,11 +307,11 @@
               <div class="position-relative preview-content">
                 <div class="preview-body mt-1 d-flex justify-content-center">
                   <div class="preview-image">
-                    <div v-auto-animate class="w-100 h-100 p-2 bg-light">
+                    <div v-auto-animate class="w-100 h-75 p-2 bg-light">
                       <div v-auto-animate class="w-100 h-100 bg-light position-relative">
-                        <img :src="formData.image" class="border-0 w-100 h-100" alt="..." />
+                        <img :src="formData.image" class="border-0 w-100 h-100 object-fit-cover" alt="..." />
                         <div class="position-absolute top-0 end-0 mt-2 me-2">
-                          <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-75 float-end" alt="..." style="width: 20%; height: auto" />
+                          <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-50 float-end" alt="..." style="width: 20%; height: auto" />
                         </div>
                       </div>
                     </div>
@@ -323,7 +322,7 @@
                     <!-- Set min-height -->
                     <div class="h-100 position-relative">
                       <div class="d-flex justify-content-center" style="height: 100%">
-                        <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-50" alt="..." style="width: auto; height: 100%" />
+                        <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-25" alt="..." style="width: auto; height: 100%" />
                       </div>
                       <div class="h-100 w-100 position-absolute start-0 top-0 preview-details-body-content">
                         <div class="d-flex justify-content-between preview-details-body-content-header mb-1">
@@ -333,7 +332,7 @@
                         <div class="d-flex preview-details-body-content-body justify-content-center px-2" style="height: calc(100% - 25px)">
                           <span class="d-flex align-items-center" style="height: 100%">
                             <span>
-                              <h5 class="fw-bold" style="text-align: left">{{ formData.details }}</h5>
+                              <h5 class="fw-bold" style="text-align: center">{{ formData.details }}</h5>
                             </span>
                           </span>
                         </div>
@@ -344,9 +343,8 @@
               </div>
               <div class="preview-footer my-1 text-light mb-3 position-absolute bottom-0 w-100">
                 <div class="d-flex justify-content-evenly">
-                  <img src="../assets/CircularLogo_gn.png " class="img-thumbnail mx-2" alt="..." style="width: 50px; height: 50px" />
-
                   <img src="../assets/Footerbanner.png" class="img-thumbnail bg-transparent border-0 mx-2" alt="..." style="height: 50px" />
+                  <img src="../assets/SocialMediaGroup.png " class="img-thumbnail mx-2 bg-transparent border-0" alt="..." style="width: auto; height: 50px" />
                 </div>
               </div>
             </div>
@@ -360,11 +358,11 @@
               <div class="preview2-container w-100 d-flex justify-content-center">
                 <div class="preview2 py-3 position-relative">
                   <div class="position-relative preview2-content">
-                    <div class="preview2-body mt-1 d-flex justify-content-center">
+                    <div class="preview2-body mt-5 d-flex justify-content-center">
                       <div class="preview2-image">
-                        <div v-auto-animate class="w-100 h-100 p-2 bg-light">
+                        <div v-auto-animate class="w-100 h-75 p-2 bg-light">
                           <div v-auto-animate class="w-100 h-100 bg-light position-relative">
-                            <img :src="formData.image" class="border-0 w-100 h-100" alt="..." />
+                            <img :src="formData.image" class="border-0 w-100 h-100 object-fit-cover" alt="..." />
                             <div class="position-absolute top-0 end-0 mt-2 me-2">
                               <img src="../assets/CircularLogo_gn_noBg.png" class="img-thumbnail bg-transparent border-0 opacity-75 float-end" alt="..." style="width: 20%; height: auto" />
                             </div>
@@ -386,7 +384,7 @@
                             <div class="d-flex preview2-details-body-content-body justify-content-center px-2" style="height: calc(100% - 25px)">
                               <span class="d-flex align-items-center" style="height: 100%">
                                 <span>
-                                  <h4 class="fw-bold" style="text-align: left">{{ formData.details }}</h4>
+                                  <h4 class="fw-bold" style="text-align: center">{{ formData.details }}</h4>
                                 </span>
                               </span>
                             </div>
@@ -397,8 +395,8 @@
                   </div>
                   <div class="preview2-footer my-1 text-light mb-3 position-absolute bottom-0 w-100">
                     <div class="d-flex justify-content-evenly">
-                      <img src="../assets/CircularLogo_gn.png " class="img-thumbnail mx-2" alt="..." style="width: 50px; height: 50px" />
                       <img src="../assets/Footerbanner.png" class="img-thumbnail bg-transparent border-0 mx-2" alt="..." style="height: 50px" />
+                      <img src="../assets/SocialMediaGroup.png " class="img-thumbnail mx-2 bg-transparent border-0" alt="..." style="width: auto; height: 50px" />
                     </div>
                   </div>
                 </div>
@@ -431,7 +429,7 @@ export default {
         { day: "Sunday", value: "Sun" },
       ],
       submited: false,
-      downloaded: false,
+      downloaded: true,
       formData: {
         details: "",
         image: null,
@@ -487,7 +485,11 @@ export default {
       this.formData.day = currentDay;
 
       let currentDate2 = new Date();
-      let formattedDate = currentDate2.toLocaleDateString(); // Format the date as needed
+      let day = currentDate2.getDate().toString().padStart(2, "0");
+      let month = (currentDate2.getMonth() + 1).toString().padStart(2, "0");
+      let year = currentDate2.getFullYear().toString().slice(-2);
+
+      let formattedDate = `${day}-${month}-${year}`;
       this.formData.date = formattedDate;
 
       this.submited = true;
@@ -523,7 +525,7 @@ export default {
         // Simulate click on the link to trigger download
         link.click();
       });
-      this.downloaded = false;
+      //this.downloaded = false;
       console.log("downloadPreview Ended");
     },
   },
